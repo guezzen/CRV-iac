@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-redis-service
+spec:
+  selector:
+    app: node-redis
+  ports:
+    - port: 8080
+  type: ClusterIP  # Par défaut, pour exposer le service à l'intérieur du cluster

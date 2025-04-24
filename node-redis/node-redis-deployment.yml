@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-redis
+  template:
+    metadata:
+      labels:
+        app: node-redis
+    spec:
+      containers:
+        - name: node-redis
+          image: localhost/node-redis-server:latest  # Remplace par ton image Docker
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REDIS_URL
+              value: redis://redis-service:6379  # Connexion à Redis via le service
+
